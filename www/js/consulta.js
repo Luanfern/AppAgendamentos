@@ -10,6 +10,7 @@ var app = {
     },
 
     listar: function(){
+        $("#TableData").html("<div></div>");
         var db = firebase.firestore();
         var ag = db.collection("agendamento");
 
@@ -23,7 +24,8 @@ var app = {
                 $("#TableData").append("<td scope='col'>" + doc.data().origem + "</td>");
                 $("#TableData").append("<td scope='col'>" + doc.data().data_contato + "</td>");
                 $("#TableData").append("<td scope='col'>" + doc.data().observacao + "</td>");
-                $("#TableData").append("<td scope='col'><a href='" + cordova.file.applicationDirectory + "www/editarClientes.html?telefone=" + doc.data().telefone + "'>Editar</a>&nbsp;|&nbsp;<a href='" + cordova.file.applicationDirectory + "www/excluirClientes.html?telefone=" + doc.data().telefone + "'>Excluir</a></td>");
+                //<a href='" + cordova.file.applicationDirectory + "www/editarClientes.html?telefone=" + doc.data().telefone + "'>Editar</a>&nbsp;|&nbsp;<a href='" + cordova.file.applicationDirectory + "www/excluirClientes.html?telefone=" + doc.data().telefone + "'>Excluir</a>
+                $("#TableData").append("<td scope='col'><a href='../editarClientes.html?telefone=" + doc.data().telefone + "'>Editar</a>&nbsp;|&nbsp;<a style='color: red;' href='../excluirClientes.html?telefone=" + doc.data().telefone + "'>Excluir</a></td>");
                 $("#TableData").append("</tr>");
             });
         })

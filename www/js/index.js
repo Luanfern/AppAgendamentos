@@ -27,8 +27,10 @@ var app = {
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
+            window.location.href = cordova.file.applicationDirectory + "www/index.html";
         })
         .catch((error) => {
+            print(error);
             console.error("Error adding document: ", error);
         });
 

@@ -16,7 +16,7 @@ var app = {
         var getTelefone = url.searchParams.get("telefone");
 
         var db = firebase.firestore();
-        var ag = db.collection("agendamentos").where("telefone", "==", getTelefone);
+        var ag = db.collection("agendamento").where("telefone", "==", getTelefone);
 
         ag.get()
         .then((querySnapshot) => {
@@ -46,12 +46,12 @@ var app = {
         let cobservacao = document.getElementById("txtObservacao").value;
 
         var db = firebase.firestore();
-        var ag = db.collection("agendamentos").where("telefone", "==", getTelefone);
+        var ag = db.collection("agendamento").where("telefone", "==", getTelefone);
 
         ag.get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                var dados = db.collection("agendamentos").doc(doc.id);
+                var dados = db.collection("agendamento").doc(doc.id);
 
                 return dados.update({
                     nome: cnome,
@@ -62,7 +62,7 @@ var app = {
                 })
                 .then(() => {
                     console.log("Document successfully updated!");
-                    window.location.href = cordova.file.applicationDirectory + "www/consultarClientes.html";
+                    window.location.href = "www/consultarClientes.html";
                 })
                 .catch((error) => {
                     // The document probably doesn't exist.
